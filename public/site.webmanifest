@@ -1,0 +1,17 @@
+{
+  "name": "AR City Scout",
+  "short_name": "AR Scout",
+  "description": "Mobile-first AR tour guide with GPS discovery, AI monument recognition, and monument reconstruction.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#03070e",
+  "theme_color": "#09111f",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
