@@ -2,6 +2,18 @@
   width: min(1240px, calc(100vw - 24px));
   margin: 0 auto;
   padding: 20px 0 48px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .top-bar,
@@ -14,6 +26,18 @@
   background: rgba(255, 255, 255, 0.9);
   box-shadow: 0 18px 55px rgba(29, 44, 39, 0.1);
   backdrop-filter: blur(18px);
+  animation: slideInUp 0.6s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .top-bar {
@@ -118,6 +142,7 @@
   margin: 14px 0;
   padding: 8px;
   border-radius: 8px;
+  animation: slideInUp 0.6s ease-out 0.1s both;
 }
 
 button,
@@ -144,9 +169,9 @@ button,
 
 button:hover,
 .inline-actions a:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px) scale(1.02);
   border-color: rgba(29, 111, 108, 0.5);
-  box-shadow: 0 12px 26px rgba(20, 23, 28, 0.12);
+  box-shadow: 0 16px 32px rgba(20, 23, 28, 0.15);
 }
 
 .screen-tabs button,
@@ -167,6 +192,19 @@ button.active,
   background: linear-gradient(135deg, #11564e, #ba3e30);
   color: #ffffff;
   box-shadow: 0 10px 24px rgba(29, 111, 108, 0.2);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 10px 24px rgba(29, 111, 108, 0.2);
+  }
+  50% {
+    box-shadow: 0 10px 24px rgba(29, 111, 108, 0.3), 0 0 0 4px rgba(29, 111, 108, 0.1);
+  }
+  100% {
+    box-shadow: 0 10px 24px rgba(29, 111, 108, 0.2);
+  }
 }
 
 .screen-grid {
@@ -186,6 +224,7 @@ button.active,
   display: grid;
   gap: 15px;
   padding: 18px;
+  animation: slideInUp 0.6s ease-out 0.2s both;
 }
 
 label {
@@ -302,6 +341,7 @@ select:focus {
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(238, 248, 245, 0.94)),
     linear-gradient(120deg, rgba(217, 164, 65, 0.18), transparent 45%);
+  animation: slideInUp 0.6s ease-out 0.3s both;
 }
 
 .map-copy {
@@ -389,6 +429,7 @@ select:focus {
   display: grid;
   gap: 14px;
   padding: 18px;
+  animation: slideInUp 0.6s ease-out 0.4s both;
 }
 
 .wide {
