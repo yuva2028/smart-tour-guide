@@ -1,0 +1,9 @@
+{
+  "appId": "com.smarttourguide.app",
+  "appName": "Smart Tour Guide",
+  "webDir": "dist",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https"
+  }
+}

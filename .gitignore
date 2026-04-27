@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Android / Gradle
+.gradle-android-build-home/
+.gradle-user-home/
+android/
+*.apk

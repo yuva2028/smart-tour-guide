@@ -1,6 +1,6 @@
 # AR City Scout
 
-A browser-based AR tour guide built with React and Vite.
+A mobile-first AR tour guide built with React, Vite, and Capacitor.
 
 ## Features
 
@@ -13,6 +13,9 @@ A browser-based AR tour guide built with React and Vite.
 - Reconstructs a monument image using AI generation
 - Shows an in-app map preview for the selected destination
 - Opens turn-by-turn navigation in Google Maps
+- Builds day itineraries, dining suggestions, transport suggestions, and safety layers
+- Supports offline trip saving, local sharing, concierge chat, and accessibility mode
+- Includes native Android prep scripts and ARCore scaffolding
 
 ## Run Locally
 
@@ -89,6 +92,38 @@ For a real production deployment, use the server-side environment variable and a
 ```powershell
 npm.cmd run build
 ```
+
+## Android Native Workflow
+
+Run environment checks:
+
+```powershell
+npm.cmd run native:doctor
+```
+
+Prepare Android assets:
+
+```powershell
+npm.cmd run android:prepare
+```
+
+Build a debug APK:
+
+```powershell
+npm.cmd run android:debug
+```
+
+Build a release bundle:
+
+```powershell
+npm.cmd run android:release
+```
+
+Additional guides:
+
+- [ANDROID_NATIVE_SETUP.md](C:/Users/yuvar/OneDrive/Documents/New%20project/ANDROID_NATIVE_SETUP.md)
+- [TECHNICAL_ARCHITECTURE.md](C:/Users/yuvar/OneDrive/Documents/New%20project/TECHNICAL_ARCHITECTURE.md)
+- [RELEASE_CHECKLIST.md](C:/Users/yuvar/OneDrive/Documents/New%20project/RELEASE_CHECKLIST.md)
 
 ## Preview Production Build
 

@@ -1,11 +1,11 @@
 {
-  "name": "AR City Scout",
-  "short_name": "AR Scout",
-  "description": "Mobile-first AR tour guide with GPS discovery, AI monument recognition, and monument reconstruction.",
+  "name": "Smart Tour Guide",
+  "short_name": "Tour Guide",
+  "description": "Location-based smart tour guide with nearby discovery, map navigation, audio guides, saved trips, and offline city packs.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#03070e",
-  "theme_color": "#09111f",
+  "background_color": "#f8fbfa",
+  "theme_color": "#f8fbfa",
   "icons": [
     {
       "src": "/favicon.svg",
