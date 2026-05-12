@@ -779,6 +779,163 @@ select:focus {
     radial-gradient(circle at 20% 20%, rgba(255, 111, 89, 0.22), transparent 32%);
 }
 
+@media (max-width: 900px) {
+  .tour-app {
+    width: 100%;
+    margin: 0;
+    padding: 16px 12px 32px;
+  }
+
+  .top-bar {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 18px;
+  }
+
+  .top-status {
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  .screen-tabs {
+    position: sticky;
+    top: 0;
+    margin: 0 -12px 14px;
+    padding: 12px;
+    border-radius: 0;
+  }
+
+  .screen-tabs button {
+    min-height: 48px;
+    padding: 12px 10px;
+    font-size: 0.95rem;
+    white-space: normal;
+  }
+
+  .screen-grid,
+  .detail-layout,
+  .map-stage,
+  .ar-screen,
+  .filter-grid,
+  .planner-controls,
+  .chat-input-row,
+  .download-row,
+  .trip-stop,
+  .detail-facts,
+  .share-panel,
+  .place-card-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .map-stage {
+    min-height: 240px;
+    padding: 16px;
+  }
+
+  .live-map,
+  .google-map-canvas,
+  .live-map iframe,
+  .ar-viewer {
+    min-height: 240px;
+  }
+
+  .place-card-actions,
+  .chat-input-row {
+    gap: 10px;
+  }
+
+  .place-card,
+  .trip-stop,
+  .download-row,
+  .review-card,
+  .chat-bubble {
+    padding: 14px;
+  }
+
+  .section-heading {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .section-heading h2 {
+    font-size: 1.75rem;
+  }
+
+  .section-heading .eyebrow {
+    margin-bottom: 10px;
+  }
+
+  .category-row button,
+  .radius-row button,
+  .language-row button,
+  .travel-mode button,
+  .inline-actions > * {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+
+  .top-bar h1 {
+    max-width: 100%;
+    font-size: clamp(2rem, 9vw, 3.4rem);
+  }
+
+  .app-section,
+  .search-panel,
+  .map-stage,
+  .live-nearby-panel,
+  .detail-panel,
+  .scan-panel,
+  .ar-panel,
+  .planner-controls {
+    padding: 16px;
+  }
+
+  .place-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .search-panel {
+    gap: 12px;
+  }
+
+  .detail-facts,
+  .profile-stats,
+  .api-grid,
+  .admin-grid,
+  .rating-row,
+  .tag-row,
+  .travel-mode,
+  .inline-actions {
+    gap: 8px;
+  }
+
+  .trip-controls {
+    justify-content: stretch;
+  }
+
+  .trip-stop,
+  .download-row {
+    align-items: stretch;
+  }
+
+  .chat-input-row {
+    grid-template-columns: 1fr;
+  }
+
+  .ar-nav-layer {
+    flex-direction: column;
+  }
+
+  .map-overlay-note {
+    left: 8px;
+    right: 8px;
+  }
+
+  .top-bar::after {
+    opacity: 0.85;
+  }
+}
+
 .ar-route-controls {
   display: grid;
   gap: 12px;

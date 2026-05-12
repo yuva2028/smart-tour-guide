@@ -957,8 +957,8 @@ function toLivePlaceFromGoogle(nearby, details) {
 let googleMapsScriptPromise = null
 
 function loadGoogleMapsScript() {
-  if (!GOOGLE_MAPS_API_KEY) return Promise.resolve(false)
-  if (window.google?.maps) return Promise.resolve(true)
+  if (!GOOGLE_MAPS_API_KEY) return Promise.resolve()
+  if (window.google?.maps) return Promise.resolve()
   if (googleMapsScriptPromise) return googleMapsScriptPromise
 
   googleMapsScriptPromise = new Promise((resolve, reject) => {
@@ -983,24 +983,7 @@ function loadGoogleMapsScript() {
 }
 
 async function fetchLivePlaces(lat, lng, radiusKm) {
-  if (!GOOGLE_MAPS_API_KEY) {
-    return fetchLivePlacesFromOsm(lat, lng, radiusKm)
-  }
-
-  const nearbyResults = await fetchNearbyFromGooglePlaces(lat, lng, radiusKm)
-  const detailResults = await Promise.allSettled(
-    nearbyResults.slice(0, 10).map((place) => fetchPlaceDetailsFromGooglePlaces(place.name)),
-  )
-  const detailMap = detailResults.reduce((accumulator, result, index) => {
-    if (result.status === 'fulfilled' && result.value) {
-      accumulator[nearbyResults[index].name] = result.value
-    }
-    return accumulator
-  }, {})
-
-  return nearbyResults
-    .map((nearby) => toLivePlaceFromGoogle(nearby, detailMap[nearby.name]))
-    .filter((place) => Number.isFinite(place.lat) && Number.isFinite(place.lng))
+  return fetchLivePlacesFromOsm(lat, lng, radiusKm)
 }
 
 function AppImage({ place, className = '' }) {
@@ -1120,7 +1103,13 @@ export default function SmartTourGuide() {
   }, [offlinePacks])
 
   useEffect(() => {
-    writeJson(STORAGE.profile, { language, offlineOnly, accessibilityMode, interests, authUser })
+    writeJson(STORAGE.profile, {
+      language,
+      offlineOnly,
+      accessibilityMode,
+      interests,
+      authUser,
+    })
   }, [accessibilityMode, authUser, interests, language, offlineOnly])
 
   useEffect(() => {
@@ -1309,7 +1298,7 @@ export default function SmartTourGuide() {
         return
       }
 
-      const scanSource = GOOGLE_MAPS_API_KEY ? 'Google Places' : 'OpenStreetMap'
+      const scanSource = 'OpenStreetMap'
       setLiveStatus(`Scanning ${scanSource} nearby locations`)
       setNearbyScanStatus(`Scanning ${scanSource} around ${position.label}`)
       try {
@@ -1366,26 +1355,9 @@ export default function SmartTourGuide() {
   }, [autoRefreshNearby, livePlaces.length, locationState, nearbyRefreshToken, offlineOnly, position, radiusKm])
 
   useEffect(() => {
-    let cancelled = false
-    if ((screen !== 'map' && screen !== 'detail') || !GOOGLE_MAPS_API_KEY) {
-      return undefined
-    }
-
-    loadGoogleMapsScript()
-      .then(() => {
-        if (cancelled) return
-        setMapReady(true)
-        setMapError('')
-      })
-      .catch(() => {
-        if (!cancelled) {
-          setMapReady(false)
-          setMapError('Google Map unavailable. Check API key or network.')
-        }
-      })
-
-    return () => {
-      cancelled = true
+    if (screen === 'map' || screen === 'detail') {
+      setMapReady(true)
+      setMapError('')
     }
   }, [screen])
 
@@ -2208,7 +2180,7 @@ export default function SmartTourGuide() {
           <span>{locationState === 'live' ? 'GPS live' : INDIA_DEFAULT.label}</span>
           <span>{online ? 'Online' : 'Offline'}</span>
           <span>{offlineOnly ? 'Offline-only' : 'Live discovery'}</span>
-          <span>{GOOGLE_MAPS_API_KEY ? 'Optional Google APIs on' : 'Free stack'}</span>
+          <span>OpenStreetMap (Free)</span>
           <span>{liveStatus}</span>
         </div>
       </header>
